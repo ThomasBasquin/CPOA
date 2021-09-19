@@ -1,8 +1,7 @@
-public class main {
-    
+public class Main {
     public static void main(String[] args) {
 
-        Periodicite update = new Periodicite();
-        update.update(15, "test");
+        Periodicite insertTest = new Periodicite();
+        insertTest.insert("test");
     }
 }
