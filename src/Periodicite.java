@@ -33,12 +33,12 @@ public class Periodicite {
         }
     }
 
-    public void delete(String libelle) { // méthode supprimer
+    public void delete(int id_periodicite) { // méthode supprimer
         try{
             Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("delete from Periodicite where id_periodocite=?", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement req = laConnexion.prepareStatement("delete from Periodicite where id_periodicite=?", Statement.RETURN_GENERATED_KEYS);
 
-            req.setString(1, "id");
+            req.setInt(1, id_periodicite);
             int nbLignes =  req.executeUpdate();
 
             ResultSet res = req.getGeneratedKeys();
@@ -61,11 +61,11 @@ public class Periodicite {
         }
     }
 
-    public void update(int id, String lib){  // méthode modifier
+    public void update(int id, String libelle){  // méthode modifier
         try {
             Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("UPDATE from Periodicite SET libelle = ? WHERE id_periodicite = ?");
-            req.setString(1,lib);
+            PreparedStatement req = laConnexion.prepareStatement("UPDATE Periodicite SET libelle = ? WHERE id_periodicite = ?", Statement.RETURN_GENERATED_KEYS);
+            req.setString(1,libelle);
             req.setInt(2,id);
             req.executeUpdate();
 

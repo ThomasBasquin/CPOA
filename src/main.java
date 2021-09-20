@@ -1,10 +1,10 @@
-public class Main {
+public class main {
     public static void main(String[] args) {
 
-        Periodicite insertTest = new Periodicite();
-        insertTest.insert("Toutes mes dents");
+        Abonnement test = new Abonnement();
+        test.insert("2002/07/29", "2002/10/28", 1, 2);
 
-        Client Albert = new Client();
-        Albert.insert("Dupont" , "Albert" , "28" , "rue principale" , "67310" , "Aziz", "Deutschland" );
+
+
     }
 }

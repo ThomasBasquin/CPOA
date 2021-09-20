@@ -9,15 +9,16 @@ public class Abonnement {
         laConnexion = connexion.creeConnexion();
     }
 
-    public void insert(Date date_debut, Date date_fin , int id_client , int id_revue) {
-        try {
+    public void insert(Date date_debut, Date date_fin, int id_client, int id_revue) { // méthode ajouter
+        try{
             Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("insert into Abonnement(date_debut , date_fin , id_client , id_revue) values(? , ? , ? , ?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement req = laConnexion.prepareStatement("insert into Abonnement(date_debut,date_fin, id_client,id_revue) values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 
-            req.setDate(1 , date_debut);
-            req.setDate(2 , date_fin);
-            req.setInt(3 , id_client);
-            req.setInt(4 , id_revue);
+            req.setDate(1, date_debut);
+            req.setDate(2, date_fin);
+            req.setInt(3, id_client);
+            req.setInt(4, id_revue);
+
             int nbLignes = req.executeUpdate();
 
             ResultSet res = req.getGeneratedKeys();
@@ -31,9 +32,14 @@ public class Abonnement {
                 requete.close();
             if (laConnexion != null)
                 laConnexion.close();
+
+
         } catch (SQLException sqle) {
-            System.out.println("Pb dans select " + sqle.getMessage());
+            System.out.println("Pb dans select" + sqle.getMessage());
         }
     }
 
+
+
 }
+

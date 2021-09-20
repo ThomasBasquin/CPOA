@@ -42,7 +42,7 @@ public class Client {
     public void delete(int id){
         try {
             Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("delete from Client" + "where id_client = ?", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement req = laConnexion.prepareStatement("delete from Client where id_client = ?", Statement.RETURN_GENERATED_KEYS);
 
             req.setInt(1, id);
             int nbLignes = req.executeUpdate();
@@ -63,18 +63,18 @@ public class Client {
 
     }
 
-    public void update(String nom , String prenom , String no_rue , String voie , String code_postal , String ville , String pays , int id){
+    public void update(int id,String nom , String prenom , String no_rue , String voie , String code_postal , String ville , String pays){
         try{
             Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("update Client set nom = ? , prenom = ? , no_rue = ? , voie = ? , code_postal = ? , ville = ? , pays = ? where id_client = ?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement req = laConnexion.prepareStatement("update Client set nom = ? , prenom = ? , no_rue = ? , voie = ? , code_postal = ? , ville = ? , pays = ? where id_client = ?", Statement.RETURN_GENERATED_KEYS);
 
             req.setString(1 , nom);
             req.setString(2 , prenom);
-            req.setString(3,no_rue);
-            req.setString(4,voie);
-            req.setString(5,code_postal);
-            req.setString(6,ville);
-            req.setString(7,pays);
+            req.setString(3 , no_rue);
+            req.setString(4 , voie);
+            req.setString(5 , code_postal);
+            req.setString(6 , ville);
+            req.setString(7 , pays);
             req.setInt(8 , id);
             int nbLignes = req.executeUpdate();
 
