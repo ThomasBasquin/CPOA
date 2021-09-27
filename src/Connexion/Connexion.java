@@ -1,3 +1,5 @@
+package Connexion;
+
 import java.sql.*;
 
 public class Connexion {

@@ -1,4 +1,7 @@
+package Métier;
+
 import java.sql.*;
+import Connexion.Connexion;
 
 public class Client {
     private Connexion connexion;
@@ -12,7 +15,7 @@ public class Client {
     public void insert(String nom,String prenom,String no_rue,String voie,String code_postal,String ville,String pays){
         try{
             Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("insert into Client(nom,prenom,no_rue,voie,code_postal,ville,pays) values(?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement req = laConnexion.prepareStatement("insert into Métier.Client(nom,prenom,no_rue,voie,code_postal,ville,pays) values(?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 
             req.setString(1,nom);
             req.setString(2,prenom);
@@ -42,7 +45,7 @@ public class Client {
     public void delete(int id){
         try {
             Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("delete from Client where id_client = ?", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement req = laConnexion.prepareStatement("delete from Métier.Client where id_client = ?", Statement.RETURN_GENERATED_KEYS);
 
             req.setInt(1, id);
             int nbLignes = req.executeUpdate();
@@ -66,7 +69,7 @@ public class Client {
     public void update(int id,String nom , String prenom , String no_rue , String voie , String code_postal , String ville , String pays){
         try{
             Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("update Client set nom = ? , prenom = ? , no_rue = ? , voie = ? , code_postal = ? , ville = ? , pays = ? where id_client = ?", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement req = laConnexion.prepareStatement("update Métier.Client set nom = ? , prenom = ? , no_rue = ? , voie = ? , code_postal = ? , ville = ? , pays = ? where id_client = ?", Statement.RETURN_GENERATED_KEYS);
 
             req.setString(1 , nom);
             req.setString(2 , prenom);

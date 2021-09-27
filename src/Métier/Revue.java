@@ -1,4 +1,7 @@
+package Métier;
+
 import java.sql.*;
+import Connexion.Connexion;
 
 public class Revue {
     private Connexion connexion;
@@ -12,7 +15,7 @@ public class Revue {
     public void insert(String titre, String desc, float tarif, String visuel, int id_periodicite) { // méthode ajouter
         try {
             Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("insert into Revue(titre,description, tarif_numero,visuel,id_periodicite) values(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement req = laConnexion.prepareStatement("insert into Métier.Revue(titre,description, tarif_numero,visuel,id_periodicite) values(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 
             req.setString(1, titre);
             req.setString(2, desc);
@@ -41,7 +44,7 @@ public class Revue {
     public void delete(int id_revue) { // méthode supprimer
         try {
             Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("delete from Revue where id_revue=?", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement req = laConnexion.prepareStatement("delete from Métier.Revue where id_revue=?", Statement.RETURN_GENERATED_KEYS);
 
             req.setInt(1, id_revue);
 
@@ -70,7 +73,7 @@ public class Revue {
     public void update(int id, String titre, String desc, float tarif, String visuel, int id_periodicite) {
         try {
             Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("UPDATE Revue SET titre = ?, description = ?, tarif_numero = ?, visuel = ?, id_periodicite = ? WHERE id_revue = ?", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement req = laConnexion.prepareStatement("UPDATE Métier.Revue SET titre = ?, description = ?, tarif_numero = ?, visuel = ?, id_periodicite = ? WHERE id_revue = ?", Statement.RETURN_GENERATED_KEYS);
 
             req.setString(1, titre);
             req.setString(2, desc);

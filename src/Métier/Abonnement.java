@@ -1,3 +1,6 @@
+package Métier;
+
+import Connexion.Connexion;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
@@ -14,7 +17,7 @@ public class Abonnement {
     public void insert(int id_client, int id_revue) { // mÃ©thode ajouter
         try{
             Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("insert into Abonnement(date_debut,date_fin, id_client,id_revue) values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement req = laConnexion.prepareStatement("insert into Métier.Abonnement(date_debut,date_fin, id_client,id_revue) values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 
             req.setDate(1,dateValid());
             req.setDate(2,dateValid());
@@ -44,7 +47,7 @@ public class Abonnement {
     public void delete(int id_abonnement) {
         try {
             Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("delete from Abonnement where id_abonnement=?", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement req = laConnexion.prepareStatement("delete from Métier.Abonnement where id_abonnement=?", Statement.RETURN_GENERATED_KEYS);
 
             req.setInt(1, id_abonnement);
 
@@ -70,7 +73,7 @@ public class Abonnement {
     public void update(int id_abonnement, int id_client, int id_revue) {
         try{
             Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("UPDATE Abonnement SET date_debut = ?, date_fin = ?, id_client = ?, id_revue = ? WHERE id_abonnement = ?", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement req = laConnexion.prepareStatement("UPDATE Métier.Abonnement SET date_debut = ?, date_fin = ?, id_client = ?, id_revue = ? WHERE id_abonnement = ?", Statement.RETURN_GENERATED_KEYS);
 
             req.setDate(1, dateValid());
             req.setDate(2, dateValid());
