@@ -1,4 +1,4 @@
-package Métier;
+package Metier;
 
 import Connexion.Connexion;
 import java.sql.*;
