@@ -26,25 +26,6 @@ public class MySqlDaoPeriodicite implements DaoPeriodicite<Periodicite> {
     }
 
     @Override
-    public Periodicite getById(int id) {
-        String libelle = null;
-        try {
-            Connection laConnexion = maConnexion.creeConnexion();
-
-            PreparedStatement req = laConnexion.prepareStatement("SELECT libelle FROM Periodicite WHERE id_periodicite = ? ");
-            req.setInt(1,id);
-            ResultSet res = req.executeQuery();
-            while (res.next()){
-                libelle =res.getString("libelle");
-            }
-            return new Periodicite(id,libelle);
-        }catch (SQLException e){
-            System.out.println("Pb dans select " + e.getMessage());
-            return null ;
-        }
-    }
-
-    @Override
     public boolean create(Periodicite objet) {
         try {
             Connection laConnexion = maConnexion.creeConnexion();
@@ -107,6 +88,25 @@ public class MySqlDaoPeriodicite implements DaoPeriodicite<Periodicite> {
             }
             return result;
 
+        }catch (SQLException e){
+            System.out.println("Pb dans select " + e.getMessage());
+            return null ;
+        }
+    }
+
+    @Override
+    public Periodicite getById(int id) {
+        String libelle = null;
+        try {
+            Connection laConnexion = maConnexion.creeConnexion();
+
+            PreparedStatement req = laConnexion.prepareStatement("SELECT libelle FROM Periodicite WHERE id_periodicite = ? ");
+            req.setInt(1,id);
+            ResultSet res = req.executeQuery();
+            while (res.next()){
+                libelle =res.getString("libelle");
+            }
+            return new Periodicite(id,libelle);
         }catch (SQLException e){
             System.out.println("Pb dans select " + e.getMessage());
             return null ;
