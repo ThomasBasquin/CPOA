@@ -1,130 +1,73 @@
 package Metier;
 
-import Connexion.Connexion;
-import java.sql.*;
-import java.text.SimpleDateFormat;
-import java.util.Scanner;
+import java.util.Date;
+import java.util.Objects;
 
 public class Abonnement {
-    private Connexion connexion;
-    private Connection laConnexion;
+    private int id_abonnement;
+    private Date date_deb = new Date();
+    private Date date_fin = new Date();
+    private int id_client;
+    private int id_revue;
 
-    public Abonnement(){
-        connexion = new Connexion();
-        laConnexion = connexion.creeConnexion();
+    public Abonnement(int id_abonnement , Date date_deb, Date date_fin , int id_client , int id_revue){
+        this.id_abonnement = id_abonnement;
+        this.date_deb = date_deb;
+        this.date_fin = date_fin;
+        this.id_client = id_client;
+        this.id_revue = id_revue;
     }
 
-    public void insert(int id_client, int id_revue) { // mÃ©thode ajouter
-        try{
-            Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("insert into Métier.Abonnement(date_debut,date_fin, id_client,id_revue) values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-
-            req.setDate(1,dateValid());
-            req.setDate(2,dateValid());
-            req.setInt(3, id_client);
-            req.setInt(4, id_revue);
-
-            int nbLignes = req.executeUpdate();
-
-            ResultSet res = req.getGeneratedKeys();
-            if (res.next()) {
-                int cle = res.getInt(1);
-            }
-
-            if (res != null)
-                res.close();
-            if (requete != null)
-                requete.close();
-            if (laConnexion != null)
-                laConnexion.close();
-
-
-        } catch (SQLException sqle) {
-            System.out.println("Pb dans select" + sqle.getMessage());
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Abonnement)) return false;
+        Abonnement that = (Abonnement) o;
+        return getId_abonnement() == that.getId_abonnement();
     }
 
-    public void delete(int id_abonnement) {
-        try {
-            Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("delete from Métier.Abonnement where id_abonnement=?", Statement.RETURN_GENERATED_KEYS);
-
-            req.setInt(1, id_abonnement);
-
-            int nbLignes = req.executeUpdate();
-
-            ResultSet res = req.getGeneratedKeys();
-            if (res.next()) {
-                int cle = res.getInt(1);
-            }
-
-            if (res != null) {
-                res.close();
-            } else if (requete != null) {
-                requete.close();
-            } else if (laConnexion != null) {
-                laConnexion.close();
-            }
-        } catch (SQLException sqle) {
-            System.out.println("Pb dans select" + sqle.getMessage());
-        }
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId_abonnement());
     }
 
-    public void update(int id_abonnement, int id_client, int id_revue) {
-        try{
-            Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("UPDATE Métier.Abonnement SET date_debut = ?, date_fin = ?, id_client = ?, id_revue = ? WHERE id_abonnement = ?", Statement.RETURN_GENERATED_KEYS);
-
-            req.setDate(1, dateValid());
-            req.setDate(2, dateValid());
-            req.setInt(3, id_client);
-            req.setInt(4, id_revue);
-            req.setInt(5, id_abonnement);
-
-            int nbLignes = req.executeUpdate();
-
-            ResultSet res = req.getGeneratedKeys();
-            if (res.next()) {
-                int cle = res.getInt(1);
-            }
-
-            if (res != null)
-                res.close();
-            if (requete != null)
-                requete.close();
-            if (laConnexion != null)
-                laConnexion.close();
-
-
-        } catch (SQLException sqle) {
-            System.out.println("Pb dans select " + sqle.getMessage());
-        }
+    public int getId_abonnement() {
+        return id_abonnement;
     }
 
-    public boolean verifFormatDate(String date){
-
-        String formatDate = "yyyy/MM/dd";
-        try {
-            SimpleDateFormat format = new SimpleDateFormat(formatDate);
-            format.setLenient(false);
-            format.parse(date);
-        } catch (Exception e) {
-            return false;
-        }
-        return true;
+    public void setId_abonnement(int id_abonnement) {
+        this.id_abonnement = id_abonnement;
     }
 
-    public java.sql.Date dateValid(){
-        String date1;
-        do {
-            System.out.println("Veuillez saisir une date de la forme yyyy/mm/dd");
-            Scanner sc = new Scanner(System.in);
-            date1 = sc.nextLine();
-        }while (!verifFormatDate(date1));
-        java.util.Date myDate = new java.util.Date(date1);
-        return new Date(myDate.getTime());
+    public Date getDate_deb() {
+        return date_deb;
     }
 
+    public void setDate_deb(Date date_deb) {
+        this.date_deb = date_deb;
+    }
 
+    public Date getDate_fin() {
+        return date_fin;
+    }
+
+    public void setDate_fin(Date date_fin) {
+        this.date_fin = date_fin;
+    }
+    public int getId_client() {
+        return id_client;
+    }
+
+    public void setId_client(int id_client) {
+        this.id_client = id_client;
+    }
+
+    public int getId_revue() {
+        return id_revue;
+    }
+
+    public void setId_revue(int id_revue) {
+        this.id_revue = id_revue;
+    }
 
 }
