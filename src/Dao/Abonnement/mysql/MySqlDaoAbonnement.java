@@ -7,8 +7,11 @@ import Metier.Abonnement;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MySqlDaoAbonnement implements DaoAbonnement<Abonnement> {
 
@@ -98,9 +101,9 @@ public class MySqlDaoAbonnement implements DaoAbonnement<Abonnement> {
 
             while  (res.next())
                 id_revue = res.getInt("id_revue");
-            id_client =res.getInt("id_client");
-            date_deb = res.getDate("date_deb");
-            date_fin = res.getDate("date_fin");
+                id_client =res.getInt("id_client");
+                date_deb = res.getDate("date_deb");
+                date_fin = res.getDate("date_fin");
 
             return new Abonnement(id,date_deb,date_fin,id_client,id_revue);
 
@@ -110,4 +113,62 @@ public class MySqlDaoAbonnement implements DaoAbonnement<Abonnement> {
         }
         return null;
     }
+
+    @Override
+    public List<Abonnement> getByDateDeb(Date date_deb) {
+        List<Abonnement> dateDebRes = new ArrayList<>();
+
+        try{
+            Connexion connexion = new Connexion();
+            Connection laConnexion = connexion.creeConnexion();
+
+            PreparedStatement requete = laConnexion.prepareStatement("SELECT id_abonnement , id_client , id_revue , date_deb , date_fin , WHERE date_deb = ? FROM Abonnement");
+            requete.setDate(1, (java.sql.Date) date_deb);
+            ResultSet res = requete.executeQuery();
+            while (res.next()){
+                int id_revue = res.getInt("id_revue");
+                int id_client = res.getInt("id_client");
+                int id_abonnement = res.getInt("id_abonnement");
+                Date date_fin = res.getDate("date_fin");
+
+                Abonnement abonnement = new Abonnement(id_abonnement , date_deb , date_fin , id_client , id_revue);
+                dateDebRes.add(abonnement);
+            }
+
+            return dateDebRes;
+        }catch (SQLException sqle){
+            System.out.println("Pb dans select " + sqle.getMessage());
+            return null;
+        }
+
+    }
+
+    @Override
+    public List<Abonnement> getByDateFin(Date date_fin) {
+        List<Abonnement> dateFinRes = new ArrayList<>();
+
+        try{
+            Connexion connexion = new Connexion();
+            Connection laConnexion = connexion.creeConnexion();
+
+            PreparedStatement requete = laConnexion.prepareStatement("SELECT id_abonnement , id_client , id_revue , date_deb , date_deb , WHERE date_fin = ? FROM Abonnement");
+            requete.setDate(1, (java.sql.Date) date_fin);
+            ResultSet res = requete.executeQuery();
+            while (res.next()){
+                int id_revue = res.getInt("id_revue");
+                int id_client = res.getInt("id_client");
+                int id_abonnement = res.getInt("id_abonnement");
+                Date date_deb = res.getDate("date_deb");
+
+                Abonnement abonnement = new Abonnement(id_abonnement , date_deb , date_fin , id_client , id_revue);
+                dateFinRes.add(abonnement);
+            }
+
+            return dateFinRes;
+        }catch (SQLException sqle){
+            System.out.println("Pb dans select " + sqle.getMessage());
+            return null;
+        }
+    }
+
 }

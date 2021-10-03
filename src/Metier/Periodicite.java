@@ -49,6 +49,6 @@ public class Periodicite {
 
     @Override
     public String toString() {
-        return "Id = " + id + " / Libell� = " + libelle;
+        return "Id = " + id + " / Libellé = " + libelle;
     }
 }

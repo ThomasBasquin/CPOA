@@ -1,105 +1,95 @@
 package Metier;
 
-import java.sql.*;
-import Connexion.Connexion;
+import java.util.Objects;
 
 public class Revue {
-    private Connexion connexion;
-    private Connection laConnexion;
 
-    public Revue(){
-        connexion = new Connexion();
-        laConnexion = connexion.creeConnexion();
+    private int id_revue;
+    private int id_periodicite;
+    private String description;
+    private float tarif_numeros;
+    private String titre;
+    private String visuel;
+
+    public Revue(int id_revue,int id_periodicite, String description, float tarif_numeros, String titre, String visuel ) {
+        this.id_revue = id_revue;
+        this.id_periodicite = id_periodicite;
+        this.description = description;
+        this.tarif_numeros = tarif_numeros;
+        this.titre = titre;
+        this.visuel = visuel;
     }
 
-    public void insert(String titre, String desc, float tarif, String visuel, int id_periodicite) { // méthode ajouter
-        try {
-            Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("insert into Métier.Revue(titre,description, tarif_numero,visuel,id_periodicite) values(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-
-            req.setString(1, titre);
-            req.setString(2, desc);
-            req.setFloat(3, tarif);
-            req.setString(4, visuel);
-            req.setInt(5, id_periodicite);
-
-            int nbLignes = req.executeUpdate();
-
-            ResultSet res = req.getGeneratedKeys();
-            if (res.next()) {
-                int cle = res.getInt(1);
-            }
-
-            if (res != null)
-                res.close();
-            if (requete != null)
-                requete.close();
-            if (laConnexion != null)
-                laConnexion.close();
-        } catch (SQLException sqle) {
-            System.out.println("Pb dans select" + sqle.getMessage());
-        }
+    public int getId_revue() {
+        return id_revue;
     }
 
-    public void delete(int id_revue) { // méthode supprimer
-        try {
-            Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("delete from Métier.Revue where id_revue=?", Statement.RETURN_GENERATED_KEYS);
-
-            req.setInt(1, id_revue);
-
-            int nbLignes = req.executeUpdate();
-
-            ResultSet res = req.getGeneratedKeys();
-            if (res.next()) {
-                int cle = res.getInt(1);
-            }
-
-            if(res != null) {
-                res.close();
-            }
-            else if (requete != null) {
-                requete.close();
-            }
-            else if (laConnexion != null){
-                laConnexion.close();
-            }
-
-        } catch (SQLException sqle) {
-            System.out.println("Pb dans select" + sqle.getMessage());
-        }
+    public void setId_revue(int id_revue) {
+        this.id_revue = id_revue;
     }
 
-    public void update(int id, String titre, String desc, float tarif, String visuel, int id_periodicite) {
-        try {
-            Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("UPDATE Métier.Revue SET titre = ?, description = ?, tarif_numero = ?, visuel = ?, id_periodicite = ? WHERE id_revue = ?", Statement.RETURN_GENERATED_KEYS);
-
-            req.setString(1, titre);
-            req.setString(2, desc);
-            req.setFloat(3, tarif);
-            req.setString(4, visuel);
-            req.setInt(5, id_periodicite);
-            req.setInt(6, id);
-
-            int nbLignes = req.executeUpdate();
-
-            ResultSet res = req.getGeneratedKeys();
-
-            if (res.next()) {
-                int cle = res.getInt(1);
-            }
-
-            if (res != null)
-                res.close();
-            if (requete != null)
-                requete.close();
-            if (laConnexion != null)
-                laConnexion.close();
-
-        } catch ( SQLException sqle) {
-            System.out.println("Pb dans select " + sqle.getMessage());
-        }
+    public int getId_periodicite() {
+        return id_periodicite;
     }
 
+    public void setId_periodicite(int id_periodicite) {
+        this.id_periodicite = id_periodicite;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public float getTarif_numeros() {
+        return tarif_numeros;
+    }
+
+    public void setTarif_numeros(float tarif_numeros) {
+        this.tarif_numeros = tarif_numeros;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public String getVisuel() {
+        return visuel;
+    }
+
+    public void setVisuel(String visuel) {
+        this.visuel = visuel;
+    }
+
+    @Override
+    public String toString() {
+        return "Revue{" +
+                "id_revue=" + id_revue +
+                ", id_periodicite=" + id_periodicite +
+                ", description='" + description + '\'' +
+                ", tarif_numeros=" + tarif_numeros +
+                ", titre='" + titre + '\'' +
+                ", visuel='" + visuel + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Revue)) return false;
+        Revue revue = (Revue) o;
+        return getId_revue() == revue.getId_revue();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId_revue());
+    }
 }

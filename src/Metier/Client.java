@@ -1,101 +1,103 @@
 package Metier;
 
-import java.sql.*;
-import Connexion.Connexion;
+
+import java.util.Objects;
 
 public class Client {
-    private Connexion connexion;
-    private Connection laConnexion;
+    private String nom;
+    private String prenom;
+    private String noRue;
+    private String ville;
+    private String pays;
+    private String voie;
+    private String code_postal;
+    private int id_client;
 
-    public Client(){
-        connexion = new Connexion();
-        laConnexion = connexion.creeConnexion();
+    public Client(String nom, String prenom, String noRue, String ville, String pays, String voie, String code_postal, int id_client) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.noRue = noRue;
+        this.ville = ville;
+        this.pays = pays;
+        this.voie = voie;
+        this.code_postal = code_postal;
+        this.id_client = id_client;
     }
 
-    public void insert(String nom,String prenom,String no_rue,String voie,String code_postal,String ville,String pays){
-        try{
-            Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("insert into Métier.Client(nom,prenom,no_rue,voie,code_postal,ville,pays) values(?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-
-            req.setString(1,nom);
-            req.setString(2,prenom);
-            req.setString(3,no_rue);
-            req.setString(4,voie);
-            req.setString(5,code_postal);
-            req.setString(6,ville);
-            req.setString(7,pays);
-            int nbLignes = req.executeUpdate();
-
-            ResultSet res = req.getGeneratedKeys();
-            if (res.next()) {
-                int cle = res.getInt(1);
-            }
-
-            if (res != null)
-                res.close();
-            if (requete != null)
-                requete.close();
-            if (laConnexion != null)
-                laConnexion.close();
-        } catch (SQLException sqle) {
-            System.out.println("Pb dans select " + sqle.getMessage());
-        }
+    public String getNom() {
+        return nom;
     }
 
-    public void delete(int id){
-        try {
-            Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("delete from Métier.Client where id_client = ?", Statement.RETURN_GENERATED_KEYS);
-
-            req.setInt(1, id);
-            int nbLignes = req.executeUpdate();
-
-            ResultSet res = req.getGeneratedKeys();
-            if (res.next()) {
-                int cle = res.getInt(1);
-            }
-            if (res != null)
-                res.close();
-            if (requete != null)
-                requete.close();
-            if (laConnexion != null)
-                laConnexion.close();
-        } catch (SQLException sqle) {
-            System.out.println("Pb dans select " + sqle.getMessage());
-        }
-
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void update(int id,String nom , String prenom , String no_rue , String voie , String code_postal , String ville , String pays){
-        try{
-            Statement requete = laConnexion.createStatement();
-            PreparedStatement req = laConnexion.prepareStatement("update Métier.Client set nom = ? , prenom = ? , no_rue = ? , voie = ? , code_postal = ? , ville = ? , pays = ? where id_client = ?", Statement.RETURN_GENERATED_KEYS);
-
-            req.setString(1 , nom);
-            req.setString(2 , prenom);
-            req.setString(3 , no_rue);
-            req.setString(4 , voie);
-            req.setString(5 , code_postal);
-            req.setString(6 , ville);
-            req.setString(7 , pays);
-            req.setInt(8 , id);
-            int nbLignes = req.executeUpdate();
-
-            ResultSet res = req.getGeneratedKeys();
-            if (res.next()) {
-                int cle = res.getInt(1);
-            }
-
-            if (res != null)
-                res.close();
-            if (requete != null)
-                requete.close();
-            if (laConnexion != null)
-                laConnexion.close();
-        } catch (SQLException sqle) {
-            System.out.println("Pb dans select " + sqle.getMessage());
-        }
+    public String getNoRue() {
+        return noRue;
     }
 
+    public String getVille() {
+        return ville;
+    }
 
+    public String getPays() {
+        return pays;
+    }
+
+    public String getVoie() {
+        return voie;
+    }
+
+    public String getCode_postal() {
+        return code_postal;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setNoRue(String noRue) {
+        this.noRue = noRue;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public void setPays(String pays) {
+        this.pays = pays;
+    }
+
+    public void setVoie(String voie) {
+        this.voie = voie;
+    }
+
+    public void setCode_postal(String code_postal) {
+        this.code_postal = code_postal;
+    }
+
+    public int getId_client() {
+        return id_client;
+    }
+
+    public void setId_client(int id_client) {
+        this.id_client = id_client;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId_client());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Client)) return false;
+        Client client = (Client) o;
+        return getId_client() == client.getId_client();
+    }
 }
