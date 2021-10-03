@@ -6,13 +6,13 @@ import Metier.Periodicite;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListeMemoireDAOPeriodicite implements DaoPeriodicite{
+public class ListeMemoireDAOPeriodicite implements DaoPeriodicite<Periodicite>{
 
     private static ListeMemoireDAOPeriodicite instance;
 
     private List<Periodicite> donnees;
 
-    public static ListeMemoireDAOPeriodicite getInstance() {      //GET INSTANCE
+    public static ListeMemoireDAOPeriodicite getInstance() {
 
         if (instance == null) {
             instance = new ListeMemoireDAOPeriodicite();
@@ -30,7 +30,7 @@ public class ListeMemoireDAOPeriodicite implements DaoPeriodicite{
     }
 
     @Override
-    public Object getById(int id) {
+    public Periodicite getById(int id) {
         int idx = this.donnees.indexOf(new Periodicite(id, "test"));
         if (idx == -1) {
             throw new IllegalArgumentException("Aucun objet ne possède cet identifiant");
@@ -82,6 +82,11 @@ public class ListeMemoireDAOPeriodicite implements DaoPeriodicite{
     }
 
     @Override
+    public List<Periodicite> getBylibelle(String libelle) {
+        return null;
+    }
+
+    //@Override
     public ArrayList<Periodicite> findAll() {
         return (ArrayList<Periodicite>) this.donnees;
     }
