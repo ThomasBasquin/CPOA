@@ -3,7 +3,6 @@ package Dao.Factory;
 import Dao.Abonnement.DaoAbonnement;
 import Dao.Client.DaoClient;
 import Dao.Periodicite.DaoPeriodicite;
-import Dao.Periodicite.listememoire.ListeMemoireDaoPeriodicite;
 import Dao.Revue.DaoRevue;
 
 public class ListeMemoireDaoFactory extends DaoFactory{
