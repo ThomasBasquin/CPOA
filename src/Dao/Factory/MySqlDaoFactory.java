@@ -3,9 +3,11 @@ package Dao.Factory;
 import Dao.Abonnement.DaoAbonnement;
 import Dao.Abonnement.mysql.MySqlDaoAbonnement;
 import Dao.Client.DaoClient;
+import Dao.Client.mysql.MySqlDaoClient;
 import Dao.Periodicite.DaoPeriodicite;
 import Dao.Periodicite.mysql.MySqlDaoPeriodicite;
 import Dao.Revue.DaoRevue;
+import Dao.Revue.mysql.MySqlDaoRevue;
 
 public class MySqlDaoFactory extends DaoFactory{
 
