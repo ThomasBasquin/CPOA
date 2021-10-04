@@ -82,14 +82,16 @@ public class ListeMemoireDAOPeriodicite implements DaoPeriodicite<Periodicite>{
 
     @Override
     public List<Periodicite> getBylibelle(String libelle) {
-        List<Periodicite> periodList = new ArrayList<>();
-        for (Periodicite pe: donnees) {
-            if (pe.getLibelle().equalsIgnoreCase(libelle)){
-                periodList.add(pe);
-            }
-        }
-        return periodList;
-        }
+        ArrayList<Periodicite> listePeriod = new ArrayList<Periodicite>();
+		int i = 0;
+		
+		while (i < donnees.size())
+		{
+			if (donnees.get(i).getLibelle().equalsIgnoreCase(nom))
+				listePeriod.add(donnees.get(i));
+			i++;
+		}
+		return (listePeriod);
     }
 
     @Override
