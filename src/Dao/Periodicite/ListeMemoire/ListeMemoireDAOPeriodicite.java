@@ -30,21 +30,10 @@ public class ListeMemoireDAOPeriodicite implements DaoPeriodicite<Periodicite>{
     }
 
     @Override
-    public Periodicite getById(int id) {
-        int idx = this.donnees.indexOf(new Periodicite(id, "test"));
-        if (idx == -1) {
-            throw new IllegalArgumentException("Aucun objet ne possède cet identifiant");
-        } else {
-            return this.donnees.get(idx);
-        }
-    }
-
-    @Override
     public boolean create(Periodicite  objet) {
         objet.setId(3);
 
         while (this.donnees.contains(objet)) {
-
             objet.setId(objet.getId() + 1);
         }
         boolean ok = this.donnees.add(objet);
@@ -87,7 +76,7 @@ public class ListeMemoireDAOPeriodicite implements DaoPeriodicite<Periodicite>{
 		
 		while (i < donnees.size())
 		{
-			if (donnees.get(i).getLibelle().equalsIgnoreCase(nom))
+			if (donnees.get(i).getLibelle().equalsIgnoreCase(libelle))
 				listePeriod.add(donnees.get(i));
 			i++;
 		}
@@ -95,6 +84,15 @@ public class ListeMemoireDAOPeriodicite implements DaoPeriodicite<Periodicite>{
     }
 
     @Override
+    public Periodicite getById(int id) {
+        int idx = this.donnees.indexOf(new Periodicite(id, "test"));
+        if (idx == -1) {
+            throw new IllegalArgumentException("Aucun objet ne possède cet identifiant");
+        } else {
+            return this.donnees.get(idx);
+        }
+    }
+
     public ArrayList<Periodicite> findAll() {
         return (ArrayList<Periodicite>) this.donnees;
     }

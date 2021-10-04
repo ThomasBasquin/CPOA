@@ -6,6 +6,7 @@ import Metier.Periodicite;
 import Metier.Revue;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ListeMemoireDAORevue implements DaoRevue<Revue> {
@@ -26,11 +27,52 @@ public class ListeMemoireDAORevue implements DaoRevue<Revue> {
     private ListeMemoireDAORevue() {
 
         this.donnees = new ArrayList<Revue>();
+
+        Date date = new Date("2017-11-04");
+        Date date1 = new Date("2019-04-10");
+        this.donnees.add(new Revue(5,1,"Revue5",9,"Trotro","enfant"));
+        this.donnees.add(new Revue(10,2,"Revue10",14,"ScienceEtVie","Animaux"));
+    }
+
+    @Override
+    public boolean create(Revue objet) {
+        objet.setId_revue(objet.getId_revue());
+        while (this.donnees.contains(objet)) {
+            objet.setId_revue(objet.getId_revue() + 1);
+        }
+        boolean ok = this.donnees.add(objet);
+
+        return ok;
+    }
+
+    @Override
+    public boolean update(Revue objet) {
+        int idx = this.donnees.indexOf(objet);
+        if (idx == -1) {
+            throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
+        } else {
+            this.donnees.set(idx, objet);
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean delete(Revue objet) {
+        Revue supprime;
+
+        int idx = this.donnees.indexOf(objet);
+        if (idx == -1) {
+            throw new IllegalArgumentException("Tentative de suppression d'un objet inexistant");
+        } else {
+            supprime = this.donnees.remove(idx);
+        }
+        return objet.equals(supprime);
     }
 
     @Override
     public Revue getById(int id) {
-        int idx = this.donnees.indexOf(new Revue(id));
+        int idx = this.donnees.indexOf(new Revue(id, 1,"Revue10",14,"ScienceEtVie","Animaux"));
         if (idx == -1) {
             throw new IllegalArgumentException("Aucun objet ne possède cet identifiant");
         } else {
@@ -40,28 +82,23 @@ public class ListeMemoireDAORevue implements DaoRevue<Revue> {
 
     @Override
     public List<Revue> getByTitre(String titre) {
-        return null;
+        List<Revue> listeTitre = new ArrayList<>();
+        for (Revue pe: donnees) {
+            if (pe.getTitre().equalsIgnoreCase(titre)){
+                listeTitre.add(pe);
+            }
+        }
+        return listeTitre;
     }
 
     @Override
-    public List<Revue> getByDescription(String description) {
-        return null;
+    public List<Revue> getByDescription(String descrption) {
+        List<Revue> listeDescription = new ArrayList<>();
+        for (Revue pe: donnees) {
+            if (pe.getDescription().equalsIgnoreCase(descrption)){
+                listeDescription.add(pe);
+            }
+        }
+        return listeDescription;
     }
-
-    @Override
-    public boolean create(Revue objet) {
-        return false;
-    }
-
-    @Override
-    public boolean update(Revue objet) {
-        return false;
-    }
-
-    @Override
-    public boolean delete(Revue objet) {
-        return false;
-    }
-
-
 }
