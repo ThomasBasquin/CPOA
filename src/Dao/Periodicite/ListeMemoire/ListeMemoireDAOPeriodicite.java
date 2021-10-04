@@ -70,7 +70,6 @@ public class ListeMemoireDAOPeriodicite implements DaoPeriodicite<Periodicite>{
     public boolean delete(Periodicite  objet) {
         Periodicite supprime;
 
-        // Ne fonctionne que si l'objet métier est bien fait...
         int idx = this.donnees.indexOf(objet);
         if (idx == -1) {
             throw new IllegalArgumentException("Tentative de suppression d'un objet inexistant");
@@ -93,7 +92,7 @@ public class ListeMemoireDAOPeriodicite implements DaoPeriodicite<Periodicite>{
         }
     }
 
-    //@Override
+    @Override
     public ArrayList<Periodicite> findAll() {
         return (ArrayList<Periodicite>) this.donnees;
     }
