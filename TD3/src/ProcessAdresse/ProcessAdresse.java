@@ -6,6 +6,26 @@ import java.util.Locale;
 
 public class ProcessAdresse {
 
+
+    public Adresse normalize(Adresse adresse) {
+        // Normalyse pays
+        if (adresse.getPays() != null) {
+            normalizePays(adresse);
+        }
+        else if(adresse.getVille() != null) {
+            normalizeVille(adresse);
+        } else if (adresse.getZip() != null) {
+            normalizeZip(adresse);
+
+        }else if (adresse.getRue() != null) {
+            normalizeVoie(adresse);
+
+        } else if (adresse.getNumRue() != null) {
+            normalizeNumero(adresse);
+        }
+        return adresse;
+    }
+
     public void normalizePays(Adresse adresse) {  // translate country
         String pays = adresse.getPays();
         if (pays.equalsIgnoreCase("letzebuerg")) {
