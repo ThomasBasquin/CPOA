@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public class ProcessAdresse {
 
-    public void normalizePays(Adresse adresse) {
+    public void normalizePays(Adresse adresse) {  // translate country
         String pays = adresse.getPays();
         if(pays.equalsIgnoreCase("letzebuerg")) {
             adresse.setPays("Luxembourg");
@@ -17,7 +17,7 @@ public class ProcessAdresse {
         }
     }
 
-    public void normalizeVille(Adresse adresse) {
+    public void normalizeVille(Adresse adresse) { // add "-" between words & replace St/Ste by Saint/Sainte
         String ville = adresse.getVille();
         String firstVille = ville.substring(0, 1).toUpperCase(); //take the first letter + set to UpperCase
         String preVille = ville.substring(1, ville.length()).trim().replace(" ", "-"); //replace the space to "-"
@@ -31,8 +31,16 @@ public class ProcessAdresse {
             String Sainte = ville.replace("ste", "Sainte");
             adresse.setVille(Sainte);
         }
+    }
+
+    public void normalizeZip(Adresse adresse){
+        String zip = adresse.getZip();
+
+
 
     }
+
+
 
 }
 

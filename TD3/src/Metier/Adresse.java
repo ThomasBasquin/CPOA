@@ -4,11 +4,11 @@ public class Adresse{
 
     private String pays;
     private String ville;
-    private int zip;
+    private String zip;
     private int numRue;
     private String rue;
 
-    public Adresse(String pays, String ville, int zip, int numRue, String rue) {
+    public Adresse(String pays, String ville, String zip, int numRue, String rue) {
         this.pays = pays;
         this.ville = ville;
         this.zip = zip;
@@ -43,11 +43,11 @@ public class Adresse{
         this.ville = ville;
     }
 
-    public int getZip() {
+    public String getZip() {
         return zip;
     }
 
-    public void setZip(int zip) {
+    public void setZip(String zip) {
         this.zip = zip;
     }
 
