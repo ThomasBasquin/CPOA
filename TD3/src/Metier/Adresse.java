@@ -16,7 +16,6 @@ public class Adresse{
         this.rue = rue;
     }
 
-
     @Override
     public String toString() {
         return "Adresse : " + numRue + " " + rue + " " + zip + " " + ville + ", " + pays;

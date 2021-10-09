@@ -23,8 +23,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-<<<<<<< HEAD
-=======
     <orderEntry type="module-library">
       <library name="JUnit5.7.0">
         <CLASSES>
@@ -41,7 +39,6 @@
         <SOURCES />
       </library>
     </orderEntry>
->>>>>>> 3ff29646f004d708614676c280609b1e29420a6e
     <orderEntry type="library" name="junit" level="project" />
   </component>
 </module>
