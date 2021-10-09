@@ -5,10 +5,10 @@ public class Adresse{
     private String pays;
     private String ville;
     private String zip;
-    private int numRue;
+    private String numRue;
     private String rue;
 
-    public Adresse(String pays, String ville, String zip, int numRue, String rue) {
+    public Adresse(String pays, String ville, String zip, String numRue, String rue) {
         this.pays = pays;
         this.ville = ville;
         this.zip = zip;
@@ -45,11 +45,11 @@ public class Adresse{
         this.zip = zip;
     }
 
-    public int getNumRue() {
+    public String getNumRue() {
         return numRue;
     }
 
-    public void setNumRue(int numRue) {
+    public void setNumRue(String numRue) {
         this.numRue = numRue;
     }
 

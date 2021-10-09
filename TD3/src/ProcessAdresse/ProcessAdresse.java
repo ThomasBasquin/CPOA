@@ -42,7 +42,13 @@ public class ProcessAdresse {
     public void normalizeZip(Adresse adresse) {
         String zip = adresse.getZip();
 
-
+        if (zip.substring(0, 1).matches("[^\\d.]")) { //if zip start with letter, delete it
+            zip = zip.substring(2, zip.length());
+        }
+        if (zip.length() < 5) { //if zip = 4digit, concat 0 at the beginning
+            zip = "0" + zip;
+        }
+        adresse.setZip(zip);
     }
 
 
@@ -74,8 +80,9 @@ public class ProcessAdresse {
     }
 
     public void normalizeNumero(Adresse adresse) {
-        int num = adresse.getNumRue();
-
+        String num = adresse.getNumRue();
+        String numero = num + ",";
+        adresse.setNumRue(numero);
     }
 }
 
