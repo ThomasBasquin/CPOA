@@ -18,13 +18,7 @@ public class Adresse{
 
     @Override
     public String toString() {
-        return "Adresse{" +
-                "pays='" + pays + '\'' +
-                ", ville='" + ville + '\'' +
-                ", zip=" + zip +
-                ", numRue=" + numRue +
-                ", rue='" + rue + '\'' +
-                '}';
+        return "Adresse : " + numRue + " " + rue + " " + zip + " " + ville + ", " + pays;
     }
 
     public String getPays() {

@@ -8,7 +8,7 @@ public class ProcessAdresse {
 
     public void normalizePays(Adresse adresse) {  // translate country
         String pays = adresse.getPays();
-        if(pays.equalsIgnoreCase("letzebuerg")) {
+        if (pays.equalsIgnoreCase("letzebuerg")) {
             adresse.setPays("Luxembourg");
         } else if (pays.equalsIgnoreCase("belgium")) {
             adresse.setPays("Belgique");
@@ -24,23 +24,58 @@ public class ProcessAdresse {
 
         adresse.setVille(firstVille + preVille);
 
-        if (ville.toLowerCase().contains("st")) {
+        if (ville.contains("st")) {
             String Saint = ville.replace("st", "Saint");
             adresse.setVille(Saint);
         } else if (ville.toLowerCase().contains("ste")) {
             String Sainte = ville.replace("ste", "Sainte");
             adresse.setVille(Sainte);
+        } else if (ville.contains("St")) {
+            String Saint = ville.replace("St", "Saint");
+            adresse.setVille(Saint);
+        } else if (ville.contains("Ste")) {
+            String Saint = ville.replace("Ste", "Sainte");
+            adresse.setVille(Saint);
         }
     }
 
-    public void normalizeZip(Adresse adresse){
+    public void normalizeZip(Adresse adresse) {
         String zip = adresse.getZip();
-
 
 
     }
 
 
+    public void normalizeVoie(Adresse adresse) {
+        String voie = adresse.getRue();
 
+        if (voie.toLowerCase().contains("boul.")) {
+            String boulevard = voie.replace("boul.", "boulevard");
+            adresse.setRue(boulevard);
+        } else if (voie.toLowerCase().contains("boul")) {
+            String boulevard = voie.replace("boul", "boulevard");
+            adresse.setRue(boulevard);
+        } else if (voie.toLowerCase().contains("bd")) {
+            String boulevard = voie.replace("bd", "boulevard");
+            adresse.setRue(boulevard);
+        } else if (voie.toLowerCase().contains("av.")) {
+            String avenue = voie.replace("av.", "avenue");
+            adresse.setRue(avenue);
+        } else if (voie.toLowerCase().contains("faub.")) {
+            String faubourg = voie.replace("faub.", "faubourg");
+            adresse.setRue(faubourg);
+        } else if (voie.toLowerCase().contains("fg")) {
+            String faubourg = voie.replace("fg", "faubourg");
+            adresse.setRue(faubourg);
+        } else if (voie.toLowerCase().contains("pl")) {
+            String place = voie.replace("pl", "place");
+            adresse.setRue(place);
+        }
+    }
+
+    public void normalizeNumero(Adresse adresse) {
+        int num = adresse.getNumRue();
+
+    }
 }
 
