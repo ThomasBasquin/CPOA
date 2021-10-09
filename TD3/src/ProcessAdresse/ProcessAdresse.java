@@ -43,6 +43,9 @@ public class ProcessAdresse {
         String preVille = ville.substring(1, ville.length()).trim().replace(" ", "-"); //replace the space to "-"
 
         adresse.setVille(firstVille + preVille);
+    }
+    public void normalizeAbreviation(Adresse adresse) {
+        String ville = adresse.getVille();
 
         if (ville.contains("st")) {
             String Saint = ville.replace("st", "Saint");
