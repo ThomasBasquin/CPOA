@@ -22,7 +22,7 @@ public class testAdresse {
 
     @Test
     public void testNormalizeLuxembourg() {
-        ad.setVille("letzebuerg");
+        ad.setPays("letzebuerg");
         assertEquals("Luxembourg", procAd.normalize(ad).getPays());
     }
 
@@ -33,7 +33,7 @@ public class testAdresse {
 
     @Test
     public void testNormalizeSuisse() {
-        ad.setVille("switzerland");
+        ad.setPays("switzerland");
         assertEquals("Suisse", procAd.normalize(ad).getPays());
     }
 }
