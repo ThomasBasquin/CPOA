@@ -7,19 +7,20 @@ import java.util.Locale;
 public class ProcessAdresse {
 
     public Adresse normalize(Adresse adresse) {
-        // Normalyse pays
         if (adresse.getPays() != null) {
             normalizePays(adresse);
         }
-        else if(adresse.getVille() != null) {
+        if(adresse.getVille() != null) {
             normalizeVille(adresse);
-        } else if (adresse.getZip() != null) {
+            normalizeAbreviation(adresse);
+        }
+        if (adresse.getZip() != null) {
             normalizeZip(adresse);
-
-        }else if (adresse.getRue() != null) {
-            normalizeVoie(adresse);
-
-        } else if (adresse.getNumRue() != null) {
+        }
+        if (adresse.getRue() != null) {
+            normalizeRue(adresse);
+        }
+        if (adresse.getNumRue() != null) {
             normalizeNumero(adresse);
         }
         return adresse;
@@ -47,17 +48,17 @@ public class ProcessAdresse {
     public void normalizeAbreviation(Adresse adresse) {
         String ville = adresse.getVille();
 
-        if (ville.contains("st")) {
+        if (ville.contains("ste")) {
+            String Saint = ville.replace("ste", "Sainte");
+            adresse.setVille(Saint);
+        } else if (ville.toLowerCase().contains("Ste")) {
+            String Sainte = ville.replace("Ste", "Sainte");
+            adresse.setVille(Sainte);
+        } else if (ville.contains("st")) {
             String Saint = ville.replace("st", "Saint");
             adresse.setVille(Saint);
-        } else if (ville.toLowerCase().contains("ste")) {
-            String Sainte = ville.replace("ste", "Sainte");
-            adresse.setVille(Sainte);
         } else if (ville.contains("St")) {
             String Saint = ville.replace("St", "Saint");
-            adresse.setVille(Saint);
-        } else if (ville.contains("Ste")) {
-            String Saint = ville.replace("Ste", "Sainte");
             adresse.setVille(Saint);
         }
     }
@@ -75,7 +76,7 @@ public class ProcessAdresse {
     }
 
 
-    public void normalizeVoie(Adresse adresse) {
+    public void normalizeRue(Adresse adresse) {
         String voie = adresse.getRue();
 
         if (voie.toLowerCase().contains("boul.")) {

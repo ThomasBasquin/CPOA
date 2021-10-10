@@ -34,29 +34,26 @@ public class ListeMemoireDAOAbonnement {
 
    /* @Override
     public boolean create(Abonnement  objet) {
-        //TODO
+
     }
 
     @Override
     public boolean update(Abonnement  objet) {
 
-        //TODO
     }
 
     @Override
     public boolean delete(Abonnement  objet) {
 
-        //TODO
     }
 
     @Override
     public List<Abonnement> getBylibelle(String libelle) {
 
-        //TODO
     }
 
     @Override
     public Abonnement getById(int id) {
-        //TODO
+
     } */
 }

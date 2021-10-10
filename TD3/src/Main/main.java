@@ -13,7 +13,7 @@ public class main {
 
         poulet.normalizePays(test);
         poulet.normalizeVille(test);
-        poulet.normalizeVoie(test);
+        poulet.normalizeRue(test);
         poulet.normalizeZip(test);
         poulet.normalizeNumero(test);
         poulet.normalizeAbreviation(test);
