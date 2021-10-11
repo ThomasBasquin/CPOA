@@ -73,7 +73,17 @@ public class testAdresse {
 
     @Test
     public void testNormalizeZip() {
-        //TODO
+        ad.setZip("57430"); //nothing change, the input is correct
+        assertEquals("57430",procAd.normalize(ad).getZip());
+
+        ad.setZip("5743"); // 4digit, add 0 to reach 5.
+        assertEquals("05743",procAd.normalize(ad).getZip());
+
+        ad.setZip("L-57430"); // remove letters
+        assertEquals("57430",procAd.normalize(ad).getZip());
+
+        ad.setZip("L-5743"); // remove letters + concat 0
+        assertEquals("05743",procAd.normalize(ad).getZip());
     }
 
     // ======================
