@@ -120,6 +120,11 @@ public class MySqlDaoClient implements DaoClient<Client> {
     }
 
     @Override
+    public List<Client> findAll() {
+        return null;
+    }
+
+    @Override
     public List<Client> getByNom(String nom) {
         List<Client> nomRes = new ArrayList<>();
 

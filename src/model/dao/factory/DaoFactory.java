@@ -18,7 +18,9 @@ public abstract class DaoFactory {
         return daoF;
     }
     public abstract DaoAbonnement getAbonnementDAO();
+
     public abstract DaoClient getClientDAO();
+
     public abstract DaoPeriodicite getPeriodicteDAO();
     public abstract DaoRevue getRevueDAO();
 

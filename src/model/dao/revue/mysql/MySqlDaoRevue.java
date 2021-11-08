@@ -122,6 +122,11 @@ public class MySqlDaoRevue implements DaoRevue<Revue> {
     }
 
     @Override
+    public List<Revue> findAll() {
+        return null;
+    }
+
+    @Override
     public List<Revue> getByTitre(String titre) {
         List<Revue> titreRes = new ArrayList<>();
         int id = 0;

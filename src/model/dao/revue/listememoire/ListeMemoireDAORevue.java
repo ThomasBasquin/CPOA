@@ -1,6 +1,7 @@
 package model.dao.revue.listememoire;
 
 import model.dao.revue.DaoRevue;
+import model.metier.Client;
 import model.metier.Revue;
 
 import java.util.ArrayList;
@@ -30,6 +31,10 @@ public class ListeMemoireDAORevue implements DaoRevue<Revue> {
         Date date1 = new Date("2019-04-10");
         this.donnees.add(new Revue(5,1,"Revue5",9,"Trotro","enfant"));
         this.donnees.add(new Revue(10,2,"Revue10",14,"ScienceEtVie","Animaux"));
+    }
+
+    public List<Revue> findAll() {
+        return (ArrayList<Revue>) this.donnees;
     }
 
     @Override

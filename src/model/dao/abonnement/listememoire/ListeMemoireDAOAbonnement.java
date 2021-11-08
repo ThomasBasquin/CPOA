@@ -1,6 +1,7 @@
 package model.dao.abonnement.listememoire;
 
 import model.metier.Abonnement;
+import model.metier.Client;
 
 
 import java.util.ArrayList;
@@ -30,6 +31,10 @@ public class ListeMemoireDAOAbonnement {
         Date date1 = new Date("2014-05-06");
         this.donnees.add(new Abonnement(1, date ,date1,1,1));
         this.donnees.add(new Abonnement(2, date,date1,1,1));
+    }
+
+    public List<Abonnement> findAll() {
+        return (ArrayList<Abonnement>) this.donnees;
     }
 
    /* @Override

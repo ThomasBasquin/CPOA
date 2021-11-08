@@ -114,6 +114,11 @@ public class MySqlDaoAbonnement implements DaoAbonnement<Abonnement> {
     }
 
     @Override
+    public List<Abonnement> findAll() {
+        return null;
+    }
+
+    @Override
     public List<Abonnement> getByDateDeb(Date date_deb) {
         List<Abonnement> dateDebRes = new ArrayList<>();
 

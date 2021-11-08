@@ -113,4 +113,9 @@ public class MySqlDaoPeriodicite implements DaoPeriodicite<Periodicite> {
         }
     }
 
+    @Override
+    public List<Periodicite> findAll() {
+        return null;
+    }
+
 }

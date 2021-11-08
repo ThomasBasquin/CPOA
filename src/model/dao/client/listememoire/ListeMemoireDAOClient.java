@@ -2,6 +2,7 @@ package model.dao.client.listememoire;
 
 import model.dao.client.DaoClient;
 import model.metier.Client;
+import model.metier.Periodicite;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,10 @@ public class ListeMemoireDAOClient implements DaoClient<Client> {
         if (donnees == null || donnees.isEmpty()) {
             donnees.add(new Client("BASQUIN","Thomas"," rue principale","Allenwiller","France","28","67310",1));
         }
+    }
+
+    public List<Client> findAll() {
+        return (ArrayList<Client>) this.donnees;
     }
 
     @Override
