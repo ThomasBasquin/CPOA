@@ -9,16 +9,14 @@ import java.io.IOException;
 		public class Main extends Application {
 			@Override
 			public void start(Stage stage) throws IOException {
-				Parent root = FXMLLoader.load(getClass().getResource("PageClient.fxml"));
+				Parent root = FXMLLoader.load(getClass().getResource("PageAccueil.fxml"));
 				Scene scene = new Scene(root);
-				stage.setTitle("Gestion");
+				stage.setTitle("Projet");
 				stage.setScene(scene);
 				stage.show();
-				stage.setResizable(false);
 			}
 
 			public static void main(String[] args) {
-
 				launch();
 			}
 
