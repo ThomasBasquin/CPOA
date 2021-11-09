@@ -16,7 +16,10 @@ public class ControllerAccueil {
     private Scene scene;
     private Parent root;
 
+    @FXML
+    private Button btn_AccQuit;
 
+    @FXML
     public void PageClient(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(getClass().getResource("../vue/PageClient.fxml"));
         scene = new Scene(root);
@@ -25,6 +28,7 @@ public class ControllerAccueil {
         stage.show();
     }
 
+    @FXML
     public void PageAbonnement(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(getClass().getResource("../vue/PageAbonnement.fxml"));
         scene = new Scene(root);
@@ -33,6 +37,7 @@ public class ControllerAccueil {
         stage.show();
     }
 
+    @FXML
     public void PageRevue(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(getClass().getResource("../vue/PageRevue.fxml"));
         scene = new Scene(root);
@@ -41,6 +46,7 @@ public class ControllerAccueil {
         stage.show();
     }
 
+    @FXML
     public void PagePeriodicite(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(getClass().getResource("../vue/PagePeriodicite.fxml"));
         scene = new Scene(root);
@@ -49,6 +55,9 @@ public class ControllerAccueil {
         stage.show();
     }
 
+    @FXML
     public void closeProject(ActionEvent actionEvent) {
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        stage.close();
     }
 }
