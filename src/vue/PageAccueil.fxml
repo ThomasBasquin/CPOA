@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ControllerAccueil">
    <top>
       <FlowPane prefHeight="131.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -54,7 +54,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="btn_AccClient" mnemonicParsing="false" prefHeight="51.0" prefWidth="200.0" text="Client">
+                  <Button fx:id="btn_AccClient" mnemonicParsing="false" onAction="#PageClient" prefHeight="51.0" prefWidth="200.0" text="Client">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -63,7 +63,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                <children>
-                  <Button fx:id="btn_AccAbo" mnemonicParsing="false" prefHeight="51.0" prefWidth="200.0" text="Abonnement">
+                  <Button fx:id="btn_AccAbo" mnemonicParsing="false" onAction="#PageAbonnement" prefHeight="51.0" prefWidth="200.0" text="Abonnement">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -72,7 +72,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="btn_AccRevue" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Revue">
+                  <Button fx:id="btn_AccRevue" mnemonicParsing="false" onAction="#PageRevue" prefHeight="25.0" prefWidth="200.0" text="Revue">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -81,7 +81,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="btn_AccPerio" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Periodicité">
+                  <Button fx:id="btn_AccPerio" mnemonicParsing="false" onAction="#PagePeriodicite" prefHeight="25.0" prefWidth="200.0" text="Periodicité">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -90,7 +90,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="btn_AccQuit" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Quitter">
+                  <Button fx:id="btn_AccQuit" mnemonicParsing="false" onAction="#closeProject" prefHeight="25.0" prefWidth="150.0" text="Quitter">
                      <font>
                         <Font size="17.0" />
                      </font>

@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ControllerPeriodicite">
    <top>
       <Label prefHeight="66.0" prefWidth="168.0" text="Periodicite" BorderPane.alignment="CENTER">
          <font>
@@ -68,7 +67,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="btn_PerioAccueil" mnemonicParsing="false" text="Accueil">
+                  <Button fx:id="btn_PerioAccueil" mnemonicParsing="false" onAction="#PageAccueil" text="Accueil">
                      <font>
                         <Font size="18.0" />
                      </font>
