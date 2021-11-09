@@ -34,7 +34,7 @@ public class ListeMemoireDAORevue implements DaoRevue<Revue> {
     }
 
     public List<Revue> findAll() {
-        return (ArrayList<Revue>) this.donnees;
+        return this.donnees;
     }
 
     @Override

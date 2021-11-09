@@ -12,6 +12,8 @@ public class MySqlDaoPeriodicite implements DaoPeriodicite<Periodicite> {
 
     private static MySqlDaoPeriodicite instance;
     private Connexion maConnexion;
+    private int id_periodicite;
+    private String libelle;
 
     public static MySqlDaoPeriodicite getInstance() {
         if (instance == null) {
@@ -115,7 +117,25 @@ public class MySqlDaoPeriodicite implements DaoPeriodicite<Periodicite> {
 
     @Override
     public List<Periodicite> findAll() {
-        return null;
+        try {
+            Connection laConnexion = maConnexion.creeConnexion();
+
+            List<Periodicite> listePeriodicite = new ArrayList<>();
+            PreparedStatement req = laConnexion.prepareStatement("SELECT * FROM Periodicite");
+            ResultSet res = req.executeQuery();
+
+            while (res.next()){
+                id_periodicite = res.getInt(1);
+                libelle = res.getString(2);
+                Periodicite periodicite = new Periodicite(id_periodicite,libelle);
+                listePeriodicite.add(periodicite);
+            }
+            return listePeriodicite;
+
+        }catch (SQLException sqlException){
+            System.out.println("Problème select : "+sqlException.getMessage());
+            return null;
+        }
     }
 
 }

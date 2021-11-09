@@ -3,6 +3,7 @@ package model.dao.client.mysql;
 import model.connexion.Connexion;
 import model.dao.client.DaoClient;
 import model.metier.Client;
+import model.metier.Periodicite;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -121,7 +122,32 @@ public class MySqlDaoClient implements DaoClient<Client> {
 
     @Override
     public List<Client> findAll() {
-        return null;
+        try{
+            Connection laConnexion = maConnexion.creeConnexion();
+
+            List<Client> ListeClient = new ArrayList<>();
+            PreparedStatement req = laConnexion.prepareStatement("SELECT * FROM Client");
+
+            ResultSet res = req.executeQuery();
+            while (res.next()){
+                int id =res.getInt("id_client");
+                String no_rue =res.getString("no_rue");
+                String nom=res.getString("nom");
+                String voie =res.getString("voie");
+                String code_postal =res.getString("code_postal");
+                String ville = res.getString("ville");
+                String pays = res.getString("pays");
+                String prenom = res.getString("prenom");
+
+                Client client = new Client(nom , prenom , no_rue , ville , pays , voie , code_postal , id);
+                ListeClient.add(client);
+            }
+            return ListeClient;
+
+        }catch (SQLException e){
+            System.out.println("Pb dans select " + e.getMessage());
+            return null ;
+        }
     }
 
     @Override

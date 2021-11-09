@@ -123,7 +123,28 @@ public class MySqlDaoRevue implements DaoRevue<Revue> {
 
     @Override
     public List<Revue> findAll() {
-        return null;
+        try {
+            Connection laConnexion = maConnexion.creeConnexion();
+
+            List<Revue> ListeRevue = new ArrayList<>();
+            PreparedStatement req = laConnexion.prepareStatement("SELECT * FROM Revue");
+            ResultSet res = req.executeQuery();
+            while (res.next()) {
+                int id_revue = res.getInt("id_revue");
+                String titre = res.getString("titre");
+                String description = res.getString("description");
+                Float tarif_numero = res.getFloat("tarif_numero");
+                String visuel = res.getString("visuel");
+                int id_periodicite = res.getInt("id_periodicite");
+
+                ListeRevue.add(new Revue(id_revue, id_periodicite, description, tarif_numero,titre , visuel ));
+            }
+            return ListeRevue;
+
+        } catch (SQLException e) {
+            System.out.println("Pb dans select " + e.getMessage());
+            return null;
+        }
     }
 
     @Override

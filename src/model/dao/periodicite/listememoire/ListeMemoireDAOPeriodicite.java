@@ -10,7 +10,7 @@ public class ListeMemoireDAOPeriodicite implements DaoPeriodicite<Periodicite>{
 
     private static ListeMemoireDAOPeriodicite instance;
 
-    private List<Periodicite> donnees;
+    private ArrayList<Periodicite> donnees;
 
     public static ListeMemoireDAOPeriodicite getInstance() {
 
@@ -25,8 +25,6 @@ public class ListeMemoireDAOPeriodicite implements DaoPeriodicite<Periodicite>{
 
         this.donnees = new ArrayList<Periodicite>();
 
-        this.donnees.add(new Periodicite(1, "Mensuel"));
-        this.donnees.add(new Periodicite(2, "Quotidien"));
     }
 
     @Override
@@ -93,8 +91,11 @@ public class ListeMemoireDAOPeriodicite implements DaoPeriodicite<Periodicite>{
         }
     }
 
-    public ArrayList<Periodicite> findAll() {
-        return (ArrayList<Periodicite>) this.donnees;
+    @Override
+    public List<Periodicite> findAll() {
+        return this.donnees;
     }
+
+
 
 }

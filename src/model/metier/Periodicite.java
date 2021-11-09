@@ -2,16 +2,16 @@ package model.metier;
 
 public class Periodicite {
 
-    private int id;
+    private int id_periodicite;
     private String libelle;
 
     public Periodicite(int id, String libelle) {
-        this.id = id;
+        this.id_periodicite = id;
         this.libelle = libelle;
     }
 
     public int getId() {
-        return id;
+        return id_periodicite;
     }
 
     public String getLibelle() {
@@ -19,7 +19,7 @@ public class Periodicite {
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id_periodicite = id;
     }
 
     public void setLibelle(String libelle) {
@@ -38,7 +38,7 @@ public class Periodicite {
             return false;
         }
         Periodicite other = (Periodicite) obj;
-        if (id != other.getId()) {
+        if (id_periodicite != other.getId()) {
             return false;
         }
         return true;
@@ -46,6 +46,6 @@ public class Periodicite {
 
     @Override
     public String toString() {
-        return "Id = " + id + " / Libellé = " + libelle;
+        return "Id = " + id_periodicite + " / Libellé = " + libelle;
     }
 }

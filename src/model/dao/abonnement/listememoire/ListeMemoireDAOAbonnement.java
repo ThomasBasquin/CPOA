@@ -1,5 +1,6 @@
 package model.dao.abonnement.listememoire;
 
+import model.dao.abonnement.DaoAbonnement;
 import model.metier.Abonnement;
 import model.metier.Client;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ListeMemoireDAOAbonnement {
+public class ListeMemoireDAOAbonnement implements DaoAbonnement<Abonnement> {
 
     private static ListeMemoireDAOAbonnement instance;
 
@@ -25,40 +26,79 @@ public class ListeMemoireDAOAbonnement {
 
     private ListeMemoireDAOAbonnement() {
 
-        this.donnees = new ArrayList<Abonnement>();
+        this.donnees = new ArrayList<>();
 
-        Date date = new Date("2013-03-08");
-        Date date1 = new Date("2014-05-06");
-        this.donnees.add(new Abonnement(1, date ,date1,1,1));
-        this.donnees.add(new Abonnement(2, date,date1,1,1));
     }
 
+    @Override
     public List<Abonnement> findAll() {
-        return (ArrayList<Abonnement>) this.donnees;
-    }
-
-   /* @Override
-    public boolean create(Abonnement  objet) {
-
+        return this.donnees;
     }
 
     @Override
-    public boolean update(Abonnement  objet) {
+    public boolean create(Abonnement objet) {
 
+        objet.setId_abonnement(3);
+        while (this.donnees.contains(objet)) {
+
+            objet.setId_abonnement(objet.getId_abonnement() + 1);
+        }
+
+        return this.donnees.add(objet);
     }
 
     @Override
-    public boolean delete(Abonnement  objet) {
+    public boolean delete(Abonnement objet) {
 
+        Abonnement supprime;
+
+        int idx = this.donnees.indexOf(objet);
+        if (idx == -1) {
+            throw new IllegalArgumentException("Tentative de suppression d'un objet inexistant");
+        } else {
+            supprime = this.donnees.remove(idx);
+        }
+
+        return objet.equals(supprime);
     }
 
     @Override
-    public List<Abonnement> getBylibelle(String libelle) {
+    public boolean update(Abonnement objet) {
 
+        int idx = -1;
+        for (Abonnement abonnement : this.donnees) {
+            if (abonnement.getId_abonnement() == objet.getId_abonnement())
+            {
+                idx = this.donnees.indexOf(abonnement);
+            }
+        }
+        if (idx == -1) {
+            throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
+        }
+        else {
+            this.donnees.set(idx, objet);
+            return true;
+        }
     }
 
     @Override
     public Abonnement getById(int id) {
 
-    } */
+        int idx = this.donnees.indexOf(new Abonnement(id,null,null,1,2));
+        if (idx == -1) {
+            throw new IllegalArgumentException("Aucun objet ne possede cet identifiant");
+        } else {
+            return this.donnees.get(idx);
+        }
+    }
+
+    @Override
+    public List<Abonnement> getByDateDeb(Date date_deb) {
+        return null;
+    }
+
+    @Override
+    public List<Abonnement> getByDateFin(Date date_fin) {
+        return null;
+    }
 }

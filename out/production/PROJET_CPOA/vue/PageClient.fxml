@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="1170.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="1170.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ControllerClient">
    <top>
       <Label prefHeight="69.0" prefWidth="94.0" text="Client" BorderPane.alignment="CENTER">
          <font>
@@ -124,7 +124,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <children>
-                  <Button mnemonicParsing="false" text="Accueil">
+                  <Button fx:id="btn_ClientAcc" mnemonicParsing="false" onAction="#PageAccueil" text="Accueil">
                      <font>
                         <Font size="18.0" />
                      </font>

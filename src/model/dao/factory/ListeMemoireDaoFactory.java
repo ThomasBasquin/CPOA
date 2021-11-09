@@ -9,6 +9,8 @@ import model.dao.periodicite.listememoire.ListeMemoireDAOPeriodicite;
 import model.dao.revue.DaoRevue;
 import model.dao.revue.listememoire.ListeMemoireDAORevue;
 
+import javax.management.openmbean.CompositeData;
+
 public class ListeMemoireDaoFactory extends DaoFactory{
 
     @Override
@@ -20,11 +22,12 @@ public class ListeMemoireDaoFactory extends DaoFactory{
     public DaoClient getClientDAO() { return ListeMemoireDAOClient.getInstance(); }
 
     @Override
-    public DaoPeriodicite getPeriodicteDAO() {
+    public DaoPeriodicite getPeriodiciteDAO() {
         return ListeMemoireDAOPeriodicite.getInstance();
     }
 
     @Override
     public DaoRevue getRevueDAO() { return ListeMemoireDAORevue.getInstance(); }
+
 
 }

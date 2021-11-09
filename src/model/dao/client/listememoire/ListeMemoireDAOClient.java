@@ -22,13 +22,11 @@ public class ListeMemoireDAOClient implements DaoClient<Client> {
 
 
     private void ListeMemoireDAOClient(){
-        if (donnees == null || donnees.isEmpty()) {
-            donnees.add(new Client("BASQUIN","Thomas"," rue principale","Allenwiller","France","28","67310",1));
-        }
+        this.donnees = new ArrayList<Client>();
     }
 
     public List<Client> findAll() {
-        return (ArrayList<Client>) this.donnees;
+        return this.donnees;
     }
 
     @Override

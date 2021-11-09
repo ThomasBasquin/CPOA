@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,6 +16,9 @@ public class ControllerAccueil {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    @FXML
+    private RadioButton radio_Sql;
 
     @FXML
     private Button btn_AccQuit;
@@ -59,5 +63,11 @@ public class ControllerAccueil {
     public void closeProject(ActionEvent actionEvent) {
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         stage.close();
+    }
+
+    public void xd(ActionEvent actionEvent) {
+        if(radio_Sql.isSelected()) {
+
+        }
     }
 }

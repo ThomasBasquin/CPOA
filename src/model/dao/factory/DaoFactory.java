@@ -1,10 +1,13 @@
 package model.dao.factory;
 
 
+import model.dao.Dao;
 import model.dao.abonnement.DaoAbonnement;
 import model.dao.client.DaoClient;
 import model.dao.periodicite.DaoPeriodicite;
 import model.dao.revue.DaoRevue;
+
+import javax.management.openmbean.CompositeData;
 
 public abstract class DaoFactory {
 
@@ -21,7 +24,8 @@ public abstract class DaoFactory {
 
     public abstract DaoClient getClientDAO();
 
-    public abstract DaoPeriodicite getPeriodicteDAO();
+    public abstract DaoPeriodicite getPeriodiciteDAO();
+
     public abstract DaoRevue getRevueDAO();
 
 }

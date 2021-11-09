@@ -115,6 +115,28 @@ public class MySqlDaoAbonnement implements DaoAbonnement<Abonnement> {
 
     @Override
     public List<Abonnement> findAll() {
+        try {
+            Connection laConnexion = maConnexion.creeConnexion();
+
+            List<Abonnement> ListeAbonnement = new ArrayList<>();
+            PreparedStatement requete = laConnexion.prepareStatement("SELECT * FROM Abonnement");
+            ResultSet res = requete.executeQuery();
+
+            while (res.next()) {
+                int id_abonnement = res.getInt("id_abonnement");
+                int id_Revue = res.getInt("id_revue");
+                int id_client = res.getInt("id_client");
+                Date date_deb = res.getDate("date_debut");
+                Date date_fin = res.getDate("date_fin");
+
+                Abonnement abonnement = new Abonnement(id_abonnement, date_deb, date_fin, id_client, id_Revue);
+                ListeAbonnement.add(abonnement);
+            }
+            return ListeAbonnement;
+        }
+        catch (SQLException sql){
+            System.out.println("pb dans le select " + sql.getMessage());
+        }
         return null;
     }
 

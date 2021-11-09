@@ -9,6 +9,8 @@ import model.dao.periodicite.mysql.MySqlDaoPeriodicite;
 import model.dao.revue.DaoRevue;
 import model.dao.revue.mysql.MySqlDaoRevue;
 
+import javax.management.openmbean.CompositeData;
+
 public class MySqlDaoFactory extends DaoFactory{
 
     @Override
@@ -22,7 +24,7 @@ public class MySqlDaoFactory extends DaoFactory{
     }
 
     @Override
-    public DaoPeriodicite getPeriodicteDAO() {
+    public DaoPeriodicite getPeriodiciteDAO() {
         return MySqlDaoPeriodicite.getInstance();
     }
 
@@ -30,4 +32,5 @@ public class MySqlDaoFactory extends DaoFactory{
     public DaoRevue getRevueDAO() {
         return MySqlDaoRevue.getInstance();
     }
+
 }
