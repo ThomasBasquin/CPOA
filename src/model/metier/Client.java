@@ -11,6 +11,7 @@ public class Client {
     private String pays;
     private String voie;
     private String code_postal;
+    private String adresseComplete;
     private int id_client;
 
     public Client(String nom, String prenom, String noRue, String ville, String pays, String voie, String code_postal, int id_client) {
@@ -87,6 +88,11 @@ public class Client {
     public void setId_client(int id_client) {
         this.id_client = id_client;
     }
+
+    public String getAdresseComplete() {
+        return adresseComplete = noRue + ' ' + voie + ' ' + code_postal + ' ' + ville + ' ' + pays;
+    }
+
 
     @Override
     public int hashCode() {
