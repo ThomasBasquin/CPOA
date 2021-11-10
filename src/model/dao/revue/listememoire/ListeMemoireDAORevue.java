@@ -27,10 +27,6 @@ public class ListeMemoireDAORevue implements DaoRevue<Revue> {
 
         this.donnees = new ArrayList<Revue>();
 
-        Date date = new Date("2017-11-04");
-        Date date1 = new Date("2019-04-10");
-        this.donnees.add(new Revue(5,1,"Revue5",9,"Trotro","enfant"));
-        this.donnees.add(new Revue(10,2,"Revue10",14,"ScienceEtVie","Animaux"));
     }
 
     public List<Revue> findAll() {

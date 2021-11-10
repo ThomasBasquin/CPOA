@@ -24,6 +24,7 @@ public class ControllerClient implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private DaoFactory persistance = ControllerAccueil.getPersistance();
 
     @FXML
     private TextField txt_ClientNom;
@@ -64,27 +65,24 @@ public class ControllerClient implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) { //Initialize
-        DaoFactory dao = DaoFactory.getDAOFactory(Persistance.LISTE_MEMOIRE);
-
         col_ClientID.setCellValueFactory(new PropertyValueFactory<Client, Integer>("id_client"));
-        col_ClientNom.setCellValueFactory(new PropertyValueFactory<Client, String>("Nom"));
-        col_ClientPrenom.setCellValueFactory(new PropertyValueFactory<Client, String>("Prenom"));
-        col_ClientAdresse.setCellValueFactory(new PropertyValueFactory<Client, String>("AdresseComplete"));
+        col_ClientNom.setCellValueFactory(new PropertyValueFactory<Client, String>("nom"));
+        col_ClientPrenom.setCellValueFactory(new PropertyValueFactory<Client, String>("prenom"));
+        col_ClientAdresse.setCellValueFactory(new PropertyValueFactory<Client, String>("adresseComplete"));
 
-        table_Client.getItems().addAll(dao.getClientDAO().findAll());
-
+        table_Client.getItems().addAll(persistance.getClientDAO().findAll());
     }
 
     public void createClient(ActionEvent actionEvent) { // Create a Client
         Client client = new Client(txt_ClientNom.getText(),txt_ClientPrenom.getText(),txt_ClientNVoie.getText(), txt_ClientVille.getText(),txt_ClientPays.getText(),txt_ClientVoie.getText(),txt_ClientZip.getText(), 1);
-        DaoFactory.getDAOFactory(Persistance.LISTE_MEMOIRE).getClientDAO().create(client);
+        persistance.getClientDAO().create(client);
     }
 
     public void changeClient(ActionEvent actionEvent) { // Modify the parameter of a Client
     }
 
     public void deleteClient(ActionEvent actionEvent) { // Delete a Client
-        DaoFactory.getDAOFactory(Persistance.LISTE_MEMOIRE).getClientDAO().delete(table_Client.getSelectionModel().getSelectedItem()); // delete the client in the Liste Memoire of the selectionned row
+        persistance.getClientDAO().delete(table_Client.getSelectionModel().getSelectedItem()); // delete the client in the Liste Memoire of the selectionned row
         table_Client.getItems().removeAll(table_Client.getSelectionModel().getSelectedItem()); //delete the selectionned row (visual)
     }
 }

@@ -119,7 +119,7 @@
                   </VBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <RadioButton fx:id="radio_Sql" mnemonicParsing="false" onAction="#getDAO" text="mySQL">
+                        <RadioButton fx:id="radio_Sql" mnemonicParsing="false" onAction="#getDao" text="mySQL">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -127,7 +127,7 @@
                               <ToggleGroup fx:id="sqlOrLm" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="radio_ListMemoire" mnemonicParsing="false" onAction="#getDAO" text="Liste Mémoire" toggleGroup="$sqlOrLm">
+                        <RadioButton fx:id="radio_ListMemoire" mnemonicParsing="false" onAction="#getDao" text="Liste Mémoire" toggleGroup="$sqlOrLm">
                            <font>
                               <Font size="14.0" />
                            </font>
