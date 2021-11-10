@@ -14,10 +14,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.dao.Dao;
 import model.dao.factory.DaoFactory;
-import model.dao.factory.Persistance;
 import model.metier.Client;
+import model.normalize.ProcessAdresse;
 
 import java.io.IOException;
 import java.net.URL;
@@ -82,7 +81,8 @@ public class ControllerClient implements Initializable {
     }
 
     public void createClient(ActionEvent actionEvent) { // Create a Client
-        Client client = new Client(txt_ClientNom.getText(),txt_ClientPrenom.getText(),txt_ClientNVoie.getText(), txt_ClientVille.getText(),txt_ClientPays.getText(),txt_ClientVoie.getText(),txt_ClientZip.getText(), 3);
+        Client client = new Client(txt_ClientNom.getText(),txt_ClientPrenom.getText(),txt_ClientNVoie.getText(), txt_ClientVille.getText(),txt_ClientPays.getText(),txt_ClientVoie.getText(),txt_ClientZip.getText(), 1);
+        ProcessAdresse.normalize(client);
         persistance.getClientDAO().create(client);
 
         // actualized the table

@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.dao.factory.DaoFactory;
 import model.metier.Client;
+import model.normalize.ProcessAdresse;
 
 import java.io.IOException;
 import java.net.URL;
@@ -56,6 +57,7 @@ public class ControllerModifier implements Initializable {
 
     public void changeClient(ActionEvent actionEvent) throws IOException { // modify the client selectionned, and come back to PageClient
         Client client = new Client(txt_ClientNom.getText(),txt_ClientPrenom.getText(),txt_ClientNVoie.getText(), txt_ClientVille.getText(),txt_ClientPays.getText(),txt_ClientVoie.getText(),txt_ClientZip.getText(),ClientToModify.getId_client());
+        ProcessAdresse.normalize(client);
         persistance.getClientDAO().update(client);
 
         root = FXMLLoader.load(getClass().getResource("../vue/PageClient.fxml"));
