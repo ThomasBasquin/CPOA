@@ -21,7 +21,6 @@ public class MySqlDaoAbonnement implements DaoAbonnement<Abonnement> {
         if (instance == null) {
             instance = new MySqlDaoAbonnement();
         }
-        System.out.println("Je suis en SQL");
         return instance;
     }
 

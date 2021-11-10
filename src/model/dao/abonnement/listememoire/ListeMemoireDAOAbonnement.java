@@ -37,6 +37,7 @@ public class ListeMemoireDAOAbonnement implements DaoAbonnement<Abonnement> {
 
     @Override
     public boolean create(Abonnement objet) {
+
         objet.setId_abonnement(objet.getId_abonnement());
         while (this.donnees.contains(objet)) {
 

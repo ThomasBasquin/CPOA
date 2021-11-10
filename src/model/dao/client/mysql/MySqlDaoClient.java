@@ -18,7 +18,6 @@ public class MySqlDaoClient implements DaoClient<Client> {
         if (instance == null) {
             instance = new MySqlDaoClient();
         }
-        System.out.println("Je suis en SQL");
         return instance;
     }
 

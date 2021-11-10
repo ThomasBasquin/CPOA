@@ -19,7 +19,6 @@ public class MySqlDaoPeriodicite implements DaoPeriodicite<Periodicite> {
         if (instance == null) {
             instance = new MySqlDaoPeriodicite();
         }
-        System.out.println("Je suis en SQL");
         return instance;
     }
 

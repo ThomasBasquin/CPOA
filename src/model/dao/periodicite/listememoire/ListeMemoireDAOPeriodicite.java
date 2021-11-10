@@ -30,6 +30,7 @@ public class ListeMemoireDAOPeriodicite implements DaoPeriodicite<Periodicite>{
     @Override
     public boolean create(Periodicite  objet) {
         objet.setId(objet.getId());
+
         while (this.donnees.contains(objet)) {
             objet.setId(objet.getId() + 1);
         }
