@@ -27,9 +27,6 @@ public class ListeMemoireDAOAbonnement implements DaoAbonnement<Abonnement> {
     private ListeMemoireDAOAbonnement() {
 
         this.donnees = new ArrayList<>();
-        Date d1 = new Date(2020-07-29);
-        Date d2 = new Date(2021-07-29);
-        this.donnees.add(new Abonnement(1,d1,d2,1,2));
 
     }
 
