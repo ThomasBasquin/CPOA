@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -68,7 +69,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="btn_RevueCreate" mnemonicParsing="false" text="Créer" />
+                  <Button fx:id="btn_RevueCreate" mnemonicParsing="false" onAction="#createRevue" text="Créer" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3" />
@@ -79,12 +80,12 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <TextField fx:id="txt_RevueDesc" />
+                  <TextArea fx:id="txt_RevueDesc" prefHeight="48.0" prefWidth="129.0" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="btn_RevueMod" mnemonicParsing="false" text="Modifier" />
+                  <Button fx:id="btn_RevueMod" mnemonicParsing="false" onAction="#PageModifierRevue" text="Modifier" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -108,7 +109,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="btn_RevueSupp" mnemonicParsing="false" text="Supprimer" />
+                  <Button fx:id="btn_RevueSupp" mnemonicParsing="false" onAction="#deleteRevue" text="Supprimer" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />

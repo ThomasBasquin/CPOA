@@ -32,7 +32,7 @@ public class MySqlDaoRevue implements DaoRevue<Revue> {
         try {;
             Connection laConnexion = maConnexion.creeConnexion();
 
-            PreparedStatement requete = laConnexion.prepareStatement("insert into Revue (id_revue , id_periodicite , description , tarif-numeros , titre , visuel ) values (?,?,?,?,?,?)");
+            PreparedStatement requete = laConnexion.prepareStatement("insert into Revue (id_revue , id_periodicite , description , tarif_numero , titre , visuel ) values (?,?,?,?,?,?)");
             requete.setInt(1, objet.getId_revue());
             requete.setInt(2, objet.getId_periodicite());
             requete.setString(3, objet.getDescription());
@@ -43,7 +43,7 @@ public class MySqlDaoRevue implements DaoRevue<Revue> {
 
             return true;
         } catch (SQLException e) {
-            System.out.println("pb dans le select" + e.getMessage());
+            System.out.println("pb dans le select : " + e.getMessage());
             return false;
         }
     }
@@ -56,6 +56,10 @@ public class MySqlDaoRevue implements DaoRevue<Revue> {
             PreparedStatement requete = laConnexion.prepareStatement("delete from Revue where id_revue=?");
             requete.setInt(1,objet.getId_revue());
             requete.executeUpdate();
+
+            PreparedStatement requeteAI = laConnexion.prepareStatement("ALTER TABLE Revue AUTO_INCREMENT = 0");
+            requeteAI.executeUpdate();
+
             return true;
         }
         catch (SQLException sqle){

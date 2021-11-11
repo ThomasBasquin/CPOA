@@ -93,6 +93,10 @@ public class Client {
         return adresseComplete = noRue + ' ' + voie + ' ' + code_postal + ' ' + ville + ' ' + pays;
     }
 
+    @Override
+    public String toString() {
+        return id_client + " - " + nom + ' ' + prenom;
+    }
 
     @Override
     public int hashCode() {

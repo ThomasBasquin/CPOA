@@ -56,6 +56,9 @@ public class MySqlDaoClient implements DaoClient<Client> {
             requete.setInt(1 , objet.getId_client());
             requete.executeUpdate();
 
+            PreparedStatement requeteAI = laConnexion.prepareStatement("ALTER TABLE Client AUTO_INCREMENT = 0");
+            requeteAI.executeUpdate();
+
             return true ;
         }
         catch (SQLException sqle){

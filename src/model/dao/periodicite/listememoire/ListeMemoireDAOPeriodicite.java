@@ -24,6 +24,8 @@ public class ListeMemoireDAOPeriodicite implements DaoPeriodicite<Periodicite>{
     private ListeMemoireDAOPeriodicite() {
 
         this.donnees = new ArrayList<Periodicite>();
+        this.donnees.add(new Periodicite(1, "Quotidien"));
+        this.donnees.add(new Periodicite(2, "Hebdomadaire"));
 
     }
 

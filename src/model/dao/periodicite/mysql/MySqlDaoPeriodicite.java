@@ -49,6 +49,10 @@ public class MySqlDaoPeriodicite implements DaoPeriodicite<Periodicite> {
             PreparedStatement req = laConnexion.prepareStatement("delete from Periodicite where id_periodicite= ?");
             req.setInt(1,objet.getId());
             req.executeUpdate();
+
+            PreparedStatement requeteAI = laConnexion.prepareStatement("ALTER TABLE Periodicite AUTO_INCREMENT = 0");
+            requeteAI.executeUpdate();
+
             return true;
         }catch(SQLException e){
             System.out.println("Pb dans select " + e.getMessage());

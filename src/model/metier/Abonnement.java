@@ -1,12 +1,13 @@
 package model.metier;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 public class Abonnement {
     private int id_abonnement;
-    private Date date_deb = new Date();
-    private Date date_fin = new Date();
+    private Date date_deb;
+    private Date date_fin;
     private int id_client;
     private int id_revue;
 

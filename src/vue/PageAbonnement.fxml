@@ -3,10 +3,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -62,7 +62,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txt_AboDebut" />
+                  <DatePicker fx:id="dp_AboDebut" />
                </children>
                <GridPane.margin>
                   <Insets />
@@ -78,7 +78,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txt_AboFin" />
+                  <DatePicker fx:id="dp_AboFin" />
                </children>
                <padding>
                   <Insets left="15.0" right="15.0" />
@@ -86,8 +86,8 @@
             </VBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="btn_AboCreate" mnemonicParsing="false" text="Créer" />
-                  <Button fx:id="btn_AboMod" mnemonicParsing="false" text="Modifier">
+                  <Button fx:id="btn_AboCreate" mnemonicParsing="false" onAction="#createAbo" text="Créer" />
+                  <Button fx:id="btn_AboMod" mnemonicParsing="false" onAction="#PageModifierAbonnement" text="Modifier">
                      <HBox.margin>
                         <Insets left="85.0" />
                      </HBox.margin>
@@ -99,7 +99,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="btn_AboSupp" mnemonicParsing="false" text="Supprimer">
+                  <Button fx:id="btn_AboSupp" mnemonicParsing="false" onAction="#deleteAbo" text="Supprimer">
                      <HBox.margin>
                         <Insets right="25.0" />
                      </HBox.margin>
@@ -121,12 +121,13 @@
       </GridPane>
    </center>
    <right>
-      <TableView fx:id="table_Abo" prefHeight="517.0" prefWidth="447.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="table_Abo" prefHeight="479.0" prefWidth="495.0" BorderPane.alignment="CENTER">
          <columns>
-            <TableColumn fx:id="col_AboClient" prefWidth="61.0" text="Client" />
-            <TableColumn fx:id="col_AboRevue" prefWidth="63.0" text="Revue" />
-            <TableColumn fx:id="col_AboDebut" prefWidth="169.0" text="Début abonnement" />
-            <TableColumn fx:id="col_AboFin" prefWidth="153.0" text="Fin abonnement" />
+            <TableColumn fx:id="col_AboID" prefWidth="35.0" text="ID" />
+            <TableColumn fx:id="col_AboClient" prefWidth="79.0" text="Client" />
+            <TableColumn fx:id="col_AboRevue" text="Revue" />
+            <TableColumn fx:id="col_AboDebut" prefWidth="138.0" text="Début abonnement" />
+            <TableColumn fx:id="col_AboFin" prefWidth="175.0" text="Fin abonnement" />
          </columns>
          <BorderPane.margin>
             <Insets left="15.0" />

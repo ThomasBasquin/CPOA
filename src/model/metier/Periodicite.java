@@ -46,6 +46,6 @@ public class Periodicite {
 
     @Override
     public String toString() {
-        return "Id = " + id_periodicite + " / Libellé = " + libelle;
+        return id_periodicite + " - " + libelle;
     }
 }

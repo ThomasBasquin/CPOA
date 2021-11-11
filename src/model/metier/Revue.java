@@ -17,7 +17,7 @@ public class Revue {
         this.description = description;
         this.tarif_numeros = tarif_numeros;
         this.titre = titre;
-        this.visuel = visuel;
+        this.visuel = "Pas de visuel";
     }
 
     public int getId_revue() {
@@ -70,14 +70,7 @@ public class Revue {
 
     @Override
     public String toString() {
-        return "Revue{" +
-                "id_revue=" + id_revue +
-                ", id_periodicite=" + id_periodicite +
-                ", description='" + description + '\'' +
-                ", tarif_numeros=" + tarif_numeros +
-                ", titre='" + titre + '\'' +
-                ", visuel='" + visuel + '\'' +
-                '}';
+        return id_revue + " - " + titre;
     }
 
     @Override

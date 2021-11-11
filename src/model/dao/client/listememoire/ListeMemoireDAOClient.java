@@ -23,6 +23,9 @@ public class ListeMemoireDAOClient implements DaoClient<Client> {
 
     private ListeMemoireDAOClient(){
         this.donnees = new ArrayList<Client>();
+
+        this.donnees.add(new Client("KUNTZ", "Alban", "76", "Metz", "France", "rue Aux Arenes", "57000", 1));
+        this.donnees.add(new Client("BASQUIN", "Thomas", "19", "Metz", "France", "Place du Saulcy", "57000", 2));
     }
 
     public List<Client> findAll() {

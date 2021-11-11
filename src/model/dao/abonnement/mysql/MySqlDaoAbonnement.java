@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,16 +30,20 @@ public class MySqlDaoAbonnement implements DaoAbonnement<Abonnement> {
         maConnexion = new Connexion();
     }
 
+    public java.sql.Date convertJavaDateToSqlDate(java.util.Date date) {
+        return new java.sql.Date(date.getTime());
+    }
+
     @Override
     public boolean create(Abonnement objet) {
-        try {;
+        try {
             Connection laConnexion = maConnexion.creeConnexion();
 
             PreparedStatement requete = laConnexion.prepareStatement("insert into Abonnement (date_debut , date_fin , id_revue , id_client) values (?,?,?,?)");
-            requete.setDate(1, (java.sql.Date) objet.getDate_deb());
-            requete.setDate(2, (java.sql.Date) objet.getDate_fin());
-            requete.setInt(3,objet.getId_revue());
-            requete.setInt(4, objet.getId_abonnement());
+            requete.setDate(1, convertJavaDateToSqlDate(objet.getDate_deb()));
+            requete.setDate(2, convertJavaDateToSqlDate(objet.getDate_fin()));
+            requete.setInt(4, objet.getId_client());
+            requete.setInt(3, objet.getId_revue());
             requete.executeUpdate();
 
             return true;
@@ -53,13 +59,18 @@ public class MySqlDaoAbonnement implements DaoAbonnement<Abonnement> {
             Connection laConnexion = maConnexion.creeConnexion();
 
             PreparedStatement requete = laConnexion.prepareStatement("delete from Abonnement where id_abonnement = ?");
-            requete.setInt(1,objet.getId_client());
+            requete.setInt(1,objet.getId_abonnement());
             requete.executeUpdate();
+
+            PreparedStatement requeteAI = laConnexion.prepareStatement("ALTER TABLE Abonnement AUTO_INCREMENT = 0");
+            requeteAI.executeUpdate();
+
             return true;
         }catch (SQLException sqle){
             System.out.println("Pb dans select " + sqle.getMessage());
+            return false;
         }
-        return false;
+
     }
 
     @Override
@@ -69,8 +80,8 @@ public class MySqlDaoAbonnement implements DaoAbonnement<Abonnement> {
 
             PreparedStatement requete = laConnexion.prepareStatement("update Abonnement SET date_debut = ? , date_fin = ? , id_revue = ? , id_client = ? WHERE id_abonnement = ?");
 
-            requete.setDate(1, (java.sql.Date) objet.getDate_deb());
-            requete.setDate(2,(java.sql.Date) objet.getDate_fin());
+            requete.setDate(1, convertJavaDateToSqlDate(objet.getDate_deb()));
+            requete.setDate(2,convertJavaDateToSqlDate(objet.getDate_fin()));
             requete.setInt(3,objet.getId_revue());
             requete.setInt(4,objet.getId_client());
             requete.setInt(5,objet.getId_abonnement());
