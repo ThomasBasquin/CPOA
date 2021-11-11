@@ -25,3 +25,5 @@ Les 2 : Dao, Normalize, controller
 Investissement : 
 Alban = 50%
 Thomas = 50%
+
+Fonctionnel sur : Intellij Community & Eclipse
